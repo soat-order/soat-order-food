@@ -23,6 +23,7 @@ class ProductGetUseCaseImpl(ProductGetUseCase):
         Logger.info(method=Logger.getMethodCurrent(), message=f"Start of use case to search product type: {type}")
         return ProductMapper.parseToDomainList(respository.findByFilter({'type': ProductType.valueOf(type).value}))
 
+
     def getByAll(self) -> List[Product]:
         Logger.info(method=Logger.getMethodCurrent(), message=f"Start of use case to search all")
         return ProductMapper.parseToDomainList(respository.findByAll())
