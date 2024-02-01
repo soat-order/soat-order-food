@@ -4,7 +4,6 @@ from src.adapter.spi.api.schema.base_response import BaseResponse
 from src.adapter.spi.api.schema.order_request import OrderRequest
 from src.adapter.spi.api.schema.order_response import OrderResponse
 from src.adapter.spi.api.mapper.order_item_mapper import OrderItemMapper
-from src.adapter.spi.api.mapper.payment_mapper import PaymentMapper
 
 
 class OrderMapper:
@@ -27,8 +26,7 @@ class OrderMapper:
                         deliveryAmount = domain.deliveryAmount,
                         totalAmount = domain.total,                
                         status = domain.status,
-                        items = OrderItemMapper.parseToResponseList(domain.items),
-                        payments = PaymentMapper.parseToResponseList(domain.payments)
+                        items = OrderItemMapper.parseToResponseList(domain.items)
                     )
         )
     

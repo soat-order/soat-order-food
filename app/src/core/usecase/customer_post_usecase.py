@@ -5,10 +5,14 @@ from src.adapter.spi.persistence.repository.customer_repository import CustomerR
 from src.adapter.spi.persistence.mapper.customer_mapper import CustomerMapper
 from src.core.util.logger_custom import Logger
 
-respository: Repository = CustomerRepository()
 
 class CustomerPostUseCaseImpl(CustomerPostUseCase):
+    def __init__(self) -> None:
+        super().__init__()
+        self.__repository: Repository = CustomerRepository()
+
+
     def execute(self, customer: Customer) -> Customer:
         Logger.info(method=Logger.getMethodCurrent(), message="Start of use case to save")
-        respository.save(CustomerMapper.parseToModel(customer))
+        self.__repository.save(CustomerMapper.parseToModel(customer))
         return customer

@@ -21,7 +21,6 @@ class OrderMapper:
     
     @staticmethod
     def parseToDomain(model: OrderModel) -> Order:
-        print(model.status)
         domain = Order(
             customerName=model.customerName,
             customerIdentify=model.customerIdentify,
@@ -30,7 +29,7 @@ class OrderMapper:
         )
         domain.issueDateTime = model.issueDateTime
         domain.deliveryAmount = model.deliveryAmount
-        domain.total = model.totalAmount
+        # domain.total = model.totalAmount
         domain.id = model.id
         return domain
 

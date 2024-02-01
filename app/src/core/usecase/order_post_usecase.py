@@ -35,7 +35,7 @@ class OrderPostUseCaseImpl(OrderPostUseCase):
     def validateItems(self, items: List[OrderItem]): 
         product: Product
         for item in items:
-            product = self.__productGetUseCase.getByCode(item.productCode) 
+            product : Product = self.__productGetUseCase.getByCode(item.productCode) 
             item.productId = product.id
-            item.amount = product.amount
+            # item.amount = product.amount
         return items            
