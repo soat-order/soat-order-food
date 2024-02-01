@@ -14,11 +14,16 @@ class StringUtil:
     def isEmpty(value: Any) -> bool:
         return not (value != None and value != "")
 
+    # TODO verificar
     # https://samos-it.com/posts/python-create-uuid-from-random-string-of-words.html
+    # @staticmethod
+    # def parseUUID(string: str) -> str:
+    #     hex_string = hashlib.md5(string.encode("utf-8")).hexdigest
+    #     return str(uuid.UUID(hex=hex_string))
+
     @staticmethod
     def parseUUID(string: str) -> str:
-        hex_string = hashlib.md5(string.encode("UTF-8")).hexdigest()
-        return str(uuid.UUID(hex=hex_string))
+        return str
 
     @staticmethod
     def validateUUID(stringUUID: str) -> bool:

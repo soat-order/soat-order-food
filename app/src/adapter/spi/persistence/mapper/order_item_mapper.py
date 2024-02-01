@@ -10,8 +10,8 @@ class OrderItemMapper:
                          amount=domain.amount, note=domain.note)
 
     @staticmethod
-    def parseToModelList(domainList: List[OrderItem]) -> List[OrderItemModel]:
-        return [OrderItemMapper.parseToModel(domain) for domain in domainList]
+    def parseToModelList(domainList: List[OrderItem]) -> List[OrderItemModel]:        
+        return [OrderItemMapper.parseToModel(domain) for domain in domainList] if len(domainList) > 0 else None
 
     @staticmethod
     def parseToDomain(model: OrderItemModel) -> OrderItem:

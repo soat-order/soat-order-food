@@ -4,7 +4,6 @@ from datetime import datetime
 from dataclasses import dataclass, field
 from decimal import *
 from src.adapter.spi.persistence.model.order_item import OrderItem
-from src.adapter.spi.persistence.model.payment import Payment
 
 @dataclass
 class Order:

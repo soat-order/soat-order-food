@@ -7,19 +7,21 @@ from src.adapter.spi.persistence.mapper.order_mapper import OrderMapper
 from src.core.util.logger_custom import Logger
 
 
+respository: Repository = OrderRepository()
+
 class OrderPutUseCaseImpl(OrderPutUseCase):
-    def __init__(self) -> None:
-        self.__respository: Repository = OrderRepository()
+    # def __init__(self) -> None:
+    #     self.__respository: Repository = OrderRepository()
         
     def updateStatus(self, id: str, status: OrderStatusEnum) -> Order:
         order: Order = self.__findById(id)
         order.status = status
-        self.__respository.updateStatus(OrderMapper.parseToModel(order))
+        respository.updateStatus(OrderMapper.parseToModel(order))
         return order
 
 
     def __findById(self, id: str) -> Order:
-        return OrderMapper.parseToDomain(self.__respository.findById(id))
+        return OrderMapper.parseToDomain(respository.findById(id))
     
     # def __toUpdate(self, productUpdate: Product, product: Product) -> Product:
     #     product.name = productUpdate.name if(not StringUtil.isEmpty(productUpdate.name)) else product.name

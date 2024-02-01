@@ -5,10 +5,8 @@ from src.core.domain.product import Product
 from src.core.domain.enum.order_status_enum import OrderStatusEnum
 from src.port.usecase.order_get_usecase import OrderGetUseCase
 from src.port.usecase.product_get_usecase import ProductGetUseCase
-from src.port.usecase.payment_get_usecase import PaymentGetUseCase
 from src.port.spi.persistence.repository.repository import Repository
 from src.core.usecase.product_get_usecase import ProductGetUseCaseImpl
-from src.core.usecase.payment_get_usecase import PaymentGetUseCaseImpl
 from src.adapter.spi.persistence.repository.order_repository import OrderRepository
 from src.adapter.spi.persistence.mapper.order_mapper import OrderMapper
 from src.core.util.string_util import StringUtil
@@ -19,13 +17,11 @@ class OrderGetUseCaseImpl(OrderGetUseCase):
     def __init__(self):
         self.__respository: Repository = OrderRepository()
         self.__productGetUseCase: ProductGetUseCase = ProductGetUseCaseImpl()
-        self.__paymentGetUseCase: PaymentGetUseCase = PaymentGetUseCaseImpl()
 
     def getById(self, id: str) -> Order:
         Logger.info(method=Logger.getMethodCurrent(), message=f"Start of use case to search order by id: {id}")
         order: Order = OrderMapper.parseToDomain(self.__respository.findById(id))
         order.items = self.__getByOrderItemProduct(order.items)
-        order.payments = self.__paymentGetUseCase.getByOrderId(orderId=order.id)
         return order
         
     def getByCustomerAndStatus(self, documentNumber: str, status: str) -> List[Order]:
