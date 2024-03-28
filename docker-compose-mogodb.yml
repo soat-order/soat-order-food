@@ -4,7 +4,7 @@ services:
     image: mongo:latest
     container_name: mongodb
     env_file:
-      - ./.env-settings
+      - ./app/.env-settings
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: password123

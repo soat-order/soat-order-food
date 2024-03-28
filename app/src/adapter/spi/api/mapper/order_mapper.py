@@ -25,7 +25,7 @@ class OrderMapper:
                         customerIdentify = domain.customerIdentify,
                         deliveryAmount = domain.deliveryAmount,
                         totalAmount = domain.total,                
-                        status = domain.status,
+                        status = domain.status.value,
                         items = OrderItemMapper.parseToResponseList(domain.items)
                     )
         )

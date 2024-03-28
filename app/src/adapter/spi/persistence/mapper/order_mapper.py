@@ -12,7 +12,8 @@ class OrderMapper:
             customerIdentify=domain.customerIdentify, 
             deliveryAmount=domain.deliveryAmount,
             totalAmount=domain.total,
-            status=domain.status.value,
+            # status=domain.status,   # pega o value do enum
+            status=domain.status.name,
             items=OrderItemMapper.parseToModelList(domain.items)
         )
         if (domain.id != None):
@@ -29,7 +30,7 @@ class OrderMapper:
         )
         domain.issueDateTime = model.issueDateTime
         domain.deliveryAmount = model.deliveryAmount
-        # domain.total = model.totalAmount
+        domain.total = model.totalAmount
         domain.id = model.id
         return domain
 
