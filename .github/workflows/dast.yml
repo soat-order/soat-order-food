@@ -20,6 +20,7 @@ jobs:
     - name: ZAP Scan
       uses: zaproxy/action-api-scan@v0.6.0
       with:
+        token: ${{ secrets.GITHUB_TOKEN }}
         docker_name: 'owasp/zap2docker-stable'
         target: 'http://localhost:8000/soat-order-food/v1/health/actuator'
         rules_file_name: '.zap/rules.tsv'
