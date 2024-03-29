@@ -18,6 +18,7 @@ from datetime import datetime
 class OrderPostUseCaseTest(TestCase):
     def __init__(self, methodName: str = "runTest") -> None:
         super().__init__(methodName)
+        print("================orderm=============init===================")
         self.useCase : OrderPostUseCaseImpl = OrderPostUseCaseImpl()
         self.orderItemMock: OrderItem = OrderItem(productCode="1", quantity=1.0, amount=1.0, note="TESTE")
         self.orderItemModelMock: OrderItemModel = OrderItemModel(productId="1", quantity=1.0, amount=1.0, note="TESTE")
@@ -27,13 +28,13 @@ class OrderPostUseCaseTest(TestCase):
         self.productMock: Product = Product(code="1",name="PRODUTO TESTE", amount=5.0, type=ProductType.BEVERAGE)
         
     
-    @patch.object(OrderRepository, 'save')
-    @patch.object(CustomerGetUseCaseImpl, 'getByDocumentNumber')
     @patch.object(ProductGetUseCaseImpl, 'getByCode')
+    @patch.object(CustomerGetUseCaseImpl, 'getByDocumentNumber')
+    @patch.object(OrderRepository, 'save')
     def test_execute_ok(self, mock_repository_save, mock_repository_getByDocumentNumber, mock_repository_getByCode):
-        mock_repository_save.return_value = self.orderModelMock
-        mock_repository_getByDocumentNumber.return_value = self.customerMock
         mock_repository_getByCode.return_value = MagicMock(self.productMock)
+        mock_repository_getByDocumentNumber.return_value = self.customerMock
+        mock_repository_save.return_value = self.orderModelMock
 
         result = self.useCase.execute(self.orderMock)
         self.assertIsNotNone(result)

@@ -37,6 +37,6 @@ class OrderPostUseCaseImpl(OrderPostUseCase):
         for item in items:
             product : Product = self.__productGetUseCase.getByCode(item.productCode) 
             item.productId = product.id
-            item.amount = product.amount
+            item.amount = product.amount            
         return items
     
