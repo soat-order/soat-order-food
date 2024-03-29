@@ -28,19 +28,21 @@ Github: https://github.com/Youngestdev/async-fastapi-mongo/blob/master/app/serve
 Github: https://testdriven.io/blog/fastapi-mongo/
 """
 
+db = None
 
-__engine_client = mongo_client.MongoClient(settings.DB_DATABASE_URL)
-db = __engine_client[settings.DB_DATABASE_NAME]
-UserTable = db.get_collection("user")
-ProductTable = db.get_collection("product")
-CustomerTable = db.get_collection("customer")
-OrderTable = db.get_collection("order")
-UserTable.create_index([("username", pymongo.ASCENDING)], unique=True)
-ProductTable.create_index([("code", pymongo.ASCENDING)], unique=True)
-CustomerTable.create_index([("documentNumber", pymongo.ASCENDING)], unique=True)
+try:
+    __engine_client = mongo_client.MongoClient("{}?timeoutMS=20000".format(settings.DB_DATABASE_URL))
+    db = __engine_client[settings.DB_DATABASE_NAME]
+    UserTable = db.get_collection("user")
+    ProductTable = db.get_collection("product")
+    CustomerTable = db.get_collection("customer")
+    OrderTable = db.get_collection("order")
+    UserTable.create_index([("username", pymongo.ASCENDING)], unique=True)
+    ProductTable.create_index([("code", pymongo.ASCENDING)], unique=True)
+    CustomerTable.create_index([("documentNumber", pymongo.ASCENDING)], unique=True)
+except Exception as ex:
+    db = None
 
-
-# db = None
 
 
 class Database(DatabasePort[T,K]):
