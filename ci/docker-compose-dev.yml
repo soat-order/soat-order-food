@@ -1,12 +1,14 @@
 version: '3'
-
 services:
-
   mongodb:
     image: mongo:latest
     container_name: mongodb
     env_file:
-      - ./app/.env-settings
+      - ../app/.env-settings
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+    #   MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    #   MONGO_INITDB_DATABASE: soat_order_db
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: password123
@@ -20,6 +22,8 @@ services:
   mongodb-express:
     image: mongo-express
     container_name: mongodb-express
+    # env_file:
+    #   - ./app/.env-settings
     restart: always
     ports:
       - 8081:8081
@@ -32,31 +36,10 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: admin
       ME_CONFIG_MONGODB_ADMINPASSWORD: password123
       ME_CONFIG_MONGODB_URL: mongodb://admin:password123@mongodb:27017/
-
-  soat-order-food:
-    build: ./
-    image: soat-order/python:24.03    
-    container_name: soat-order-food
-    env_file:
-      - ./app/.env-settings-prd
-    restart: always
-    environment:
-      PYTHONDONTWRITEBYTECODE: 1
-    working_dir: /app
-    ports:
-      - 8000:8000
-    links:
-      - mongodb
-    depends_on:
-      - mongodb  
-    volumes:
-      - "./app:/app"
-      - "./requirements.txt:/app/requirements.txt"
-      - "./app/.env-settings-prd:/app/.env-settings"
-    tty: true  
-    command: >
-      bash -c "python3 -u main.py
-      && /bin/bash"
+      # ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      # ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      # ME_CONFIG_MONGODB_URL: ${DB_DATABASE_URL}
 
 volumes:
   mongo:
+
