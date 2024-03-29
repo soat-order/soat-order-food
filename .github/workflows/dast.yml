@@ -15,11 +15,11 @@ jobs:
       run: echo ${PWD} && ls -lR; cd ./ci/; docker-compose -f "docker-compose.yml" up -d --build
 
     - name: ZAP Scan
-      uses: zaproxy/action-api-scan@v0.6.0
+      uses: zaproxy/action-baseline@v0.11.0
       with:
         target: 'http://localhost:8000/soat-order-food/v1/health/actuator'
         cmd_options:
-            '-j -n ci/zap/context.context -z "-config ratelimit.rules.rule.enabled=true \
+            '-j -z "-config ratelimit.rules.rule.enabled=true \
             -config ratelimit.rules.rule.reqsPerSec=3 \
             -config scanner.hostPerScan=1 \
             -config scanner.threadPerHost=1 \
