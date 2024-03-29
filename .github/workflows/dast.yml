@@ -30,7 +30,7 @@ codacy-security-scan:
         with:
           sarif_file: results.sarif
 
-  test-dast:
+test-dast:
     permissions: write-all
 
     runs-on: ubuntu-latest
