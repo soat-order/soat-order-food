@@ -18,7 +18,13 @@ jobs:
       uses: zaproxy/action-api-scan@v0.6.0
       with:
         target: 'http://localhost:8000/soat-order-food/v1/health/actuator'
-        cmd_options: -config ratelimit.rules.rule.enabled=true -config ratelimit.rules.rule.reqsPerSec=3 -config scanner.threadPerHost=1
+        cmd_options:
+            '-j -n ci/zap/context.context -z "-config ratelimit.rules.rule.enabled=true \
+            -config ratelimit.rules.rule.reqsPerSec=3 \
+            -config scanner.hostPerScan=1 \
+            -config scanner.threadPerHost=1 \
+            -config scanner.delayInMs=0 \
+            -config scanner.maxResults=1000"'
 
     - name: Stop containers
       if: always()
