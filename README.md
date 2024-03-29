@@ -44,6 +44,7 @@ aws --endpoint-url http://localhost:4566 sqs create-queue --queue-name sqs-payme
 aws --endpoint-url http://localhost:4566 sqs list-queues --profile soat-order
 
 aws --endpoint-url http://localhost:4566 sqs send-message --queue-url http://localhost:4566/000000000000/sqs-payment-order --message-body "Mensagem de Teste 2"
+
 ```
 
 

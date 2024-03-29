@@ -23,7 +23,8 @@ class OrderPuttUseCaseTest(TestCase):
     @patch.object(OrderRepository, 'updateStatus')
     def test_execute_ok(self, mock_repository_findById, mock_repository_update):
         mock_repository_findById.return_value = self.orderModelMock
-        mock_repository_update.return_value =self.orderMock
+        # mock_repository_update.return_value = self.orderMock
+        mock_repository_update.return_value = self.orderModelMock
 
         result = self.useCase.updateStatus(id="1", status=OrderStatusEnum.READY)
         self.assertIsNotNone(result)
