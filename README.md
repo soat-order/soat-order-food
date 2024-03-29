@@ -17,13 +17,14 @@ $python3 src/app/main.py
 
 **DOCKER**
 ```
-# start mongodb
-docker-compose -f docker-compose-mongodb.yml up -d
+# start em desenvolvimento
+docker-compose -f docker-compose-dev.yml up -d
 
 # start mongodb e deploy da aplicacao
 docker-compose up -d
 #
 ```
+
 **swagger**
 ```
 http://localhost:8000/docs
@@ -35,6 +36,16 @@ http://localhost:8000/redoc
 $lsof -i :8000
 $ kill -9 PID
 ```
+
+**AWS SQS**
+```
+aws --endpoint-url=http://localhost:4566 sqs create-queue --queue-name sqs-payment-order --region sa-east-1
+aws --endpoint-url http://localhost:4566 sqs create-queue --queue-name sqs-payment-order --profile soat-order
+aws --endpoint-url http://localhost:4566 sqs list-queues --profile soat-order
+
+aws --endpoint-url http://localhost:4566 sqs send-message --queue-url http://localhost:4566/000000000000/sqs-payment-order --message-body "Mensagem de Teste 2"
+```
+
 
 **
 ```
@@ -84,8 +95,6 @@ pytest --junitxml=tests/test-results.xml --cov=./app/tests/ --cov-report=xml --c
 
 # simples
 pytest -cov=codigo app/tests/
-
-
 ```
 
 **Dependencias Instalando**
