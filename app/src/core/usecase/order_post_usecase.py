@@ -26,16 +26,17 @@ class OrderPostUseCaseImpl(OrderPostUseCase):
         Logger.info(method=Logger.getMethodCurrent(), message="Start of use case to save order")
         customer: Customer = self.__customerGetUseCase.getByDocumentNumber(order.customerIdentify)
         order.customerName = customer.name        
-        order.items = self.validateItems(order.items)
+        order.items = self.__validateItems(order.items)
         order.deliveryAmount = 5.00
         order.calculate()
         self.__repository.save(OrderMapper.parseToModel(order))
         return order
 
-    def validateItems(self, items: List[OrderItem]): 
+    def __validateItems(self, items: List[OrderItem]): 
         product: Product
         for item in items:
             product : Product = self.__productGetUseCase.getByCode(item.productCode) 
             item.productId = product.id
-            # item.amount = product.amount
-        return items            
+            item.amount = product.amount
+        return items
+    

@@ -5,6 +5,7 @@ class OrderStatusEnum(Enum):
     IN_PREPARATION = "EM PREPARAÇÃO"
     READY = "PRONTO"
     FINISHED = "FINALIZADO"
+    WAITING_PAYMENT = "AGUARDANDO PAGAMENTO"
 
     @classmethod
     def valueOfValid(cls, value) -> bool:

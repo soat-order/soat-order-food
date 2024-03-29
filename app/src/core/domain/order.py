@@ -16,7 +16,7 @@ class Order():
     deliveryAmount: float = field(init=False,default=0.00)
     total: float = field(init=False,default=0.00)    
     items: List[OrderItem] = field(default_factory=List[OrderItem])
-    status: OrderStatusEnum = field(default=OrderStatusEnum.RECEIVED)
+    status: OrderStatusEnum = field(default=OrderStatusEnum.WAITING_PAYMENT)
     
     def calculate(self) -> float:
         self.total = self.deliveryAmount

@@ -13,4 +13,5 @@ class UserPostUseCase(UserPostUserCasePort):
 
     def create(self, user: User) -> User:
         Logger.info(method=Logger.getMethodCurrent(), message="Start of use case to save user")
+        print(f"========================{UserMapper.parseToModel(user)}")
         return UserMapper.parseToDomain(self.__repository.save(UserMapper.parseToModel(user)))
