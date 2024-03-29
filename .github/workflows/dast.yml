@@ -19,7 +19,7 @@ jobs:
       with:
         target: 'http://localhost:8000/soat-order-food/v1/health/actuator'
         cmd_options:
-            '-j -z "-config ratelimit.rules.rule.enabled=true \
+            '-z "-config ratelimit.rules.rule.enabled=true \
             -config ratelimit.rules.rule.reqsPerSec=3 \
             -config scanner.hostPerScan=1 \
             -config scanner.threadPerHost=1 \
