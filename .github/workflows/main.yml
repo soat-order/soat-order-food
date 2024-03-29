@@ -1,6 +1,6 @@
 name: SOAT application build and SonarCloud quality check
 
-on:
+on: workflow_dispatch
   pull_request:
     branches: [ main ]
 
