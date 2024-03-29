@@ -52,4 +52,4 @@ jobs:
 
     - name: Stop containers
       if: always()
-      run: cd ./ci/ ; docker-compose -f "docker-compose.yml" down
+      run: pwd; ls -la; cd ./ci/ ; docker-compose -f "docker-compose.yml" down
