@@ -31,7 +31,7 @@ Github: https://testdriven.io/blog/fastapi-mongo/
 db = None
 
 try:
-    __engine_client = mongo_client.MongoClient("{}?timeoutMS=20000".format(settings.DB_DATABASE_URL))
+    __engine_client = mongo_client.MongoClient(host=settings.DB_DATABASE_URL, connectTimeoutMS=20000, socketTimeoutMS=20000)
     db = __engine_client[settings.DB_DATABASE_NAME]
     UserTable = db.get_collection("user")
     ProductTable = db.get_collection("product")
@@ -43,6 +43,16 @@ try:
 except Exception as ex:
     db = None
 
+
+# __engine_client = mongo_client.MongoClient(settings.DB_DATABASE_URL)
+# db = __engine_client[settings.DB_DATABASE_NAME]
+# UserTable = db.get_collection("user")
+# ProductTable = db.get_collection("product")
+# CustomerTable = db.get_collection("customer")
+# OrderTable = db.get_collection("order")
+# UserTable.create_index([("username", pymongo.ASCENDING)], unique=True)
+# ProductTable.create_index([("code", pymongo.ASCENDING)], unique=True)
+# CustomerTable.create_index([("documentNumber", pymongo.ASCENDING)], unique=True)
 
 
 class Database(DatabasePort[T,K]):

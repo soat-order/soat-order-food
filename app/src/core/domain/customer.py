@@ -8,3 +8,4 @@ class Customer():
     documentNumber: str
     email: str
     phoneNumber: str
+    inactive: bool = field(init=False, default=True)

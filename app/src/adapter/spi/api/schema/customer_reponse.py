@@ -8,3 +8,4 @@ class CustomerResponse():
     documentNumber: str = field(metadata={"name": 'document_number'})
     email: str
     phoneNumber: str
+    inactive: bool
