@@ -8,6 +8,7 @@ class Customer():
     documentNumber: str
     email: str
     phoneNumber: str
+    inactive: bool = field(init=False, default=False)
 
     def __post_init__(self):
         self.id = str(uuid.uuid4())

@@ -22,7 +22,7 @@ class CustomerMapper:
     @staticmethod
     def parseToResponse(domain: Customer) -> BaseResponse[CustomerResponse]:
         return BaseResponse(data=CustomerResponse(id=domain.id, name=domain.name, documentNumber=domain.documentNumber,
-                                email=domain.email,phoneNumber=domain.phoneNumber))
+                                email=domain.email,phoneNumber=domain.phoneNumber,inactive=domain.inactive))
     
     @staticmethod
     def parseToResponseList(domainList: List[Customer]) -> BaseResponse[CustomerResponse]:

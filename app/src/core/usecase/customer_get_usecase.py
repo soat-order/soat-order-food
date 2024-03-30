@@ -15,6 +15,5 @@ class CustomerGetUseCaseImpl(CustomerGetUseCase):
     def getByDocumentNumber(self, documentNumber: str) -> Customer:
         return CustomerMapper.parseToDomain(respository.findByDocumentNumber(StringUtil.formatDocumentNumber(documentNumber)))
        
-    
     def getByAll(self) -> List[Customer]:
         return respository.findByAll()

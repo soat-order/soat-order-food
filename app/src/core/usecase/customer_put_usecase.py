@@ -15,6 +15,13 @@ class CustomerPutUseCaseImpl(CustomerPutUseCase):
         customer = self.__toUpdate(customerUpdate, customer)
         respository.update(CustomerMapper.parseToModel(customer))
         return customer
+    
+    def inactive(self, id: str, inactive: bool) -> Customer:
+        Logger.info(method=Logger.getMethodCurrent(), message=f"Start of use case to inactive: {inactive}")
+        customer : Customer = CustomerMapper.parseToDomain(self.__findById(id))
+        customer.inactive = inactive
+        respository.update(CustomerMapper.parseToModel(customer))
+        return customer
 
     def __findById(self, id: str) -> Customer:
         return respository.findById(id)

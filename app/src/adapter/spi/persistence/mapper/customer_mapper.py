@@ -10,6 +10,7 @@ class CustomerMapper:
                     email=domain.email, phoneNumber=domain.phoneNumber)
         if (domain.id != None):
             model.id = domain.id
+        model.inactive = domain.inactive    
         return model
     
     @staticmethod
@@ -17,6 +18,7 @@ class CustomerMapper:
         domain = Customer(name=model.name, documentNumber=model.documentNumber,
                     email=model.email, phoneNumber=model.phoneNumber)
         domain.id = model.id
+        domain.inactive = model.inactive
         return domain
         
     @staticmethod
@@ -32,6 +34,7 @@ class CustomerMapper:
         customer = CustomerModel(name=dictModel['name'], documentNumber=dictModel['documentNumber'], 
                     email=dictModel['email'], phoneNumber=dictModel['phoneNumber'])
         customer.id = dictModel['_id']
+        customer.inactive = dictModel['inactive']
         return customer
 
     @staticmethod

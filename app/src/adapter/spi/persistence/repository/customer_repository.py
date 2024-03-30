@@ -11,7 +11,12 @@ class CustomerRepository(RepositoryDefault[Customer, int]):
 
     def findByDocumentNumber(self, documentNumber: str) -> Customer:
         try:
-            return self.parseToModel(self._getSession().find_one({"documentNumber": documentNumber}))
+            customer: Customer = self.parseToModel(self._getSession().find_one({"documentNumber": documentNumber}))
+            if (customer.inactive == False):
+                return customer
+            else:
+                raise BusinessException(status_code=400,
+                            detail=f"Not found {self.modelType.__name__} by documentNumber :{documentNumber}")        
         except Exception as ex:            
             raise BusinessException(status_code=404,
                             detail=f"Not found {self.modelType.__name__} by documentNumber :{documentNumber}")        
