@@ -1,0 +1,11 @@
+User-agent: *
+
+disallow:/v1/auth/singup
+disallow:/v1/auth/login/token
+disallow:/v1/auth/username/soat.order
+disallow:/v1/customers
+disallow:/v1/customers/e971d416-7336-4a1e-9ac9-234b1b4ba98a
+disallow:/v1/customers/document/00000000000
+disallow:/v1/products
+disallow:/v1/products/af1736fe-ed3b-4962-b88b-066c3bdafafd
+disallow:/v1/products/category/sorvete
