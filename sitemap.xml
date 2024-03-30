@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<!--
+Created with Free Online Sitemap Generator www.countingcharacters.com/xml-sitemap-generator
+-->
+<url>
+      <loc>http://localhost:8000/soat-order-food/v1/auth/singup</loc>
+      <lastmod>2024-03-29</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1</priority>
+</url>
+<url>
+      <loc>http://localhost:8000/soat-order-food/v1/auth/login/token</loc>
+      <lastmod>2024-03-29</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1</priority>
+</url>
+<url>
+      <loc>http://localhost:8000/soat-order-food/v1/auth/username/soat.order</loc>
+      <lastmod>2024-03-29</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1</priority>
+</url>
+<url>
+      <loc>http://localhost:8000/soat-order-food/v1/customers</loc>
+      <lastmod>2024-03-29</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1</priority>
+</url>
+<url>
+      <loc>http://localhost:8000/soat-order-food/v1/customers/e971d416-7336-4a1e-9ac9-234b1b4ba98a</loc>
+      <lastmod>2024-03-29</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1</priority>
+</url>
+<url>
+      <loc>http://localhost:8000/soat-order-food/v1/customers/document/00000000000</loc>
+      <lastmod>2024-03-29</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1</priority>
+</url>
+<url>
+      <loc>http://localhost:8000/soat-order-food/v1/products</loc>
+      <lastmod>2024-03-29</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1</priority>
+</url>
+<url>
+      <loc>http://localhost:8000/soat-order-food/v1/products/af1736fe-ed3b-4962-b88b-066c3bdafafd</loc>
+      <lastmod>2024-03-29</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1</priority>
+</url>
+<url>
+      <loc>http://localhost:8000/soat-order-food/v1/products/category/sorvete</loc>
+      <lastmod>2024-03-29</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1</priority>
+</url>
+</urlset>
