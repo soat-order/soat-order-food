@@ -55,7 +55,7 @@ services:
 
   soat-order-food:
     build: ../
-    image: soat-order/python:24.03    
+    image: soat-order-food/python:24.03    
     container_name: soat-order-food
     env_file:
       - ../app/.env-settings-prd
